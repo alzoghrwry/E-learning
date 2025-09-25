@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('assignments', function (Blueprint $table) {
@@ -18,13 +15,9 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->timestamp('due_date')->nullable(); 
             $table->timestamps();
-});
-
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('assignments');

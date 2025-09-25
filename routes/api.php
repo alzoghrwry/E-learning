@@ -14,9 +14,7 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\Api\ChatController;
 
 Route::prefix('v1')->group(function () {
-    // ----------------------
-    // Public routes (no auth)
-    // ----------------------
+  
     Route::get('courses/public', [CourseController::class, 'publicCourses']);
     Route::get('categories/public', [CategoryController::class, 'publicCategories']);
 
@@ -25,9 +23,8 @@ Route::prefix('v1')->group(function () {
     Route::post('forgot-password', [AuthController::class, 'forgotPassword']);
     Route::post('reset-password', [AuthController::class, 'resetPassword']);
 
-    // ----------------------
-    // Authenticated routes (Admin/Users)
-    // ----------------------
+  
+   
     Route::middleware('auth:sanctum')->group(function () {
         Route::apiResource('users', UserController::class);
         Route::apiResource('courses', CourseController::class);
@@ -41,7 +38,7 @@ Route::prefix('v1')->group(function () {
     });
     Route::get('/dashboard/stats', [DashboardController::class, 'stats']);
 
-    // Admin only
+   
     Route::middleware(['auth:sanctum', AdminMiddleware::class])->group(function () {
         Route::apiResource('categories', CategoryController::class);
     });
