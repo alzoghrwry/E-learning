@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
@@ -11,14 +12,23 @@ class Course extends Model
     protected $fillable = [
         'title',
         'description',
-        'instructor_id',
         'thumbnail',
         'is_free',
         'price',
         'level',
-        'category',
+        'category_id',
+        'instructor_id',
     ];
 
+    // Accessor لتحويل thumbnail إلى URL كامل
+    protected $appends = ['thumbnail_url'];
+
+    public function getThumbnailUrlAttribute()
+    {
+        return $this->thumbnail ? asset('storage/' . $this->thumbnail) : null;
+    }
+
+    // علاقات
     public function instructor()
     {
         return $this->belongsTo(User::class, 'instructor_id');
@@ -44,10 +54,15 @@ class Course extends Model
     {
         return $this->hasMany(Assignment::class);
     }
+
     public function category()
-{
-    return $this->belongsTo(Category::class);
-}
+    {
+        return $this->belongsTo(Category::class);
+    }
 
+    // Shortcut لحساب عدد الطلاب الملتحقين
+    public function enrolledStudentsCount()
+    {
+        return $this->students()->count();
+    }
 }
-
