@@ -9,7 +9,7 @@ The system provides authentication, course management, student dashboards, categ
 
 ## 🚀 Tech Stack
 - **Backend:** Laravel 11, Sanctum, MySQL
-- **Frontend:** Vue 3, Vite, Pinia, TailwindCSS
+- **Frontend:** Vue 3, Vite, Pinia, TailwindCSS 
 - **Auth:** Token-based (Sanctum)
 - **Deployment Ready:** Can be hosted separately (API + Frontend)
 
@@ -20,6 +20,6 @@ The system provides authentication, course management, student dashboards, categ
 ### 🔹 Backend (Laravel API)
 1. Clone the repository:
    ```bash
-   git clone https://github.com/USERNAME/e-learning-backend.git
-   cd e-learning-backend
+   git clone https://github.com/alzoghrwry/E-learning.git
+   cd E-learning-
 
